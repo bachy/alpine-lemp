@@ -1,6 +1,6 @@
 # Install web server and secure it on alpine linux
 
-[] Fail2ban
+[x] Fail2ban
 [] Ufw
 [] Proftpd
 [] Knockd

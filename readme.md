@@ -1,17 +1,17 @@
 # Install web server and secure it on alpine linux
 
-[ ] Fail2ban
-[ ] Ufw
-[ ] Proftpd
-[ ] Knockd
-[ ] Nginx
-[ ] Mariadb
-[ ] php7.0-fpm
-[ ] redis
-[ ] vhosts
-[ ] git barre repos
-[ ] zabbix-agent
-[ ] dotfiles and more
+[] Fail2ban
+[] Ufw
+[] Proftpd
+[] Knockd
+[] Nginx
+[] Mariadb
+[] php7.0-fpm
+[] redis
+[] vhosts
+[] git barre repos
+[] zabbix-agent
+[] dotfiles and more
 
 ## how to use it
 on a fresh install

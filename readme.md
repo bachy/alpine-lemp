@@ -1,16 +1,21 @@
 # Install web server and secure it on alpine linux
 
-- [ ] Fail2ban
-- [ ] Ufw
+- [x] upgrade
+- [x] adduser
+- [x] misc
+- [x] Ufw (to be replaced by awall)
+- [x] Fail2ban
 - [ ] Proftpd
 - [ ] Knockd
-- [ ] Nginx
 - [ ] Mariadb
-- [ ] php7.0-fpm
-- [ ] redis
+- [ ] php7-fpm
+- [ ] Nginx
+- [ ] letsencrypt
 - [ ] vhosts
+- [ ] redis
 - [ ] git barre repos
 - [ ] zabbix-agent
+- [ ] urbackup-client
 - [ ] dotfiles and more
 
 ## how to use it

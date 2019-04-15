@@ -8,7 +8,7 @@ echo '\033[35m
 /____/____/_/ /_/
 \033[0m'
 
-. bin/ssh.sh
+. bin/checkroot.sh
 
 sed -i 's/#PermitRootLogin\ prohibit-password/PermitRootLogin no/g' /etc/ssh/sshd_config
 sed -i 's/#PermitEmptyPasswords\ yes/PermitEmptyPasswords no/g' /etc/ssh/sshd_config

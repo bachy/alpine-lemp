@@ -9,7 +9,7 @@ echo -e '\033[35m
 \033[0m'
 echo -e "\033[35;1mInstalling fall2ban \033[0m"
 
-. checkroot.sh
+. bin/checkroot.sh
 
 sleep 2
 

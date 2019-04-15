@@ -10,7 +10,7 @@ echo '\033[35m
 \____/_/    \____/_/ |_/_/  |_/_____/_____/
 \033[0m'
 
-. checkroot.sh
+. bin/checkroot.sh
 
 apk update
 apk upgrade

@@ -9,7 +9,7 @@ echo -e '\033[35m
 \033[0m'
 echo -e "\033[35;1mCreate new user (you will be asked a user name and a password) \033[0m"
 
-. checkroot.sh
+. bin/checkroot.sh
 
 sleep 3
 

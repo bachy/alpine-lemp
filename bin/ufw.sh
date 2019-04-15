@@ -9,7 +9,7 @@ echo -e '\033[35m
 \033[0m'
 echo -e "\033[35;1mInstalling ufw and setup firewall (allowing only ssh and http) \033[0m"
 
-. checkroot.sh
+. bin/checkroot.sh
 sleep 2
 
 # TODO use awall instead of ufw ?

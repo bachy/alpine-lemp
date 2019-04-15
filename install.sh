@@ -25,8 +25,9 @@ _cwd="$(pwd)"
 . bin/upgrade
 . bin/user.sh
 . bin/misc.sh
-. bin/firewall.sh
+. bin/ufw.sh
 . bin/fail2ban.sh
+. bin/knockd.sh
 
 
-. bin/lemp.sh
+# . bin/lemp.sh

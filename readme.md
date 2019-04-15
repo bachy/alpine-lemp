@@ -37,8 +37,12 @@ git clone https://figureslibres.io/gogs/bachir/alpine-web-server.git
 su
 cd alpine-web-server
 chmod a+x install.sh
-./install.sh
+. install.sh
 
+```
+4 all script in bin/ can be ran seperatly, but from the repos source exclusively
+```
+. bin/misc.sh
 ```
 
 ## ref

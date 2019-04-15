@@ -9,7 +9,7 @@ echo -e '\033[35m
 
 \033[0m'
 
-. checkroot.sh
+. bin/checkroot.sh
 
 sleep 2
 
@@ -23,5 +23,6 @@ apk add vim curl
 # apt-get --yes --force-yes install ntp
 # dpkg-reconfigure tzdata
 apk add tmux etckeeper htop lynx unzip # needrestart
+
 
 echo -e "\033[92;1mMisc done \033[Om"

@@ -7,27 +7,8 @@ echo '
  |___/\___/\__|_| |_|_\___/__/
 '
 #installing better prompt and some goodies
-echo "Installing shell prompt for current user $USER "
+echo "Installing dot files for current user"
 sleep 2
-#
-# # get the current position
-# _cwd="$(pwd)"
-#
-# # check for assets forlder
-# _assets="$_cwd/assets"
-# if [ ! -d "$_assets" ]; then
-#   _assets="$_cwd/../assets"
-#   if [ ! -d "$_assets" ]; then
-#     echo "!! can't find assets directory !!"
-#     exit
-#   fi
-# fi
-#
-# cp "$_assets"/dotfiles/.vimrc /home/"$USER"/
-# cp -r "$_assets"/dotfiles/.vim /home/"$USER"/
-#
-# cp "$_assets"/dotfiles/.inputrc /home/"$USER"/
-
 
 # get the current position
 _cwd="$(pwd)"
@@ -39,4 +20,4 @@ source ~/.bashrc
 # return to working directory
 cd "$_cwd"
 
-echo "Dot files installed for $USER"
+echo "Dot files installed"

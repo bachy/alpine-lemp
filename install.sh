@@ -23,13 +23,16 @@ fi
 _cwd="$(pwd)"
 
 . bin/upgrade
-. bin/dotfiles.sh
 . bin/bash
+. bin/misc.sh
+. bin/dotfiles.sh
 . bin/user.sh
 . bin/ssh.sh
-. bin/misc.sh
 . bin/ufw.sh
 . bin/fail2ban.sh
 . bin/knockd.sh
 # . bin/email.sh
 . bin/lemp.sh
+# . bin/vhost.sh
+. bin/zabbix.sh
+# . bin/urbackup.sh

@@ -1,22 +1,26 @@
 # Install web server and secure it on alpine linux
 
 - [x] upgrade
-- [x] adduser
+- [x] bash
 - [x] misc
-- [x] Ufw (to be replaced by awall)
+- [x] dotfiles
+- [x] user
+- [x] secure openssh
+- [x] Ufw (may be eventualy replaced by awall ?)
 - [x] Fail2ban
-- [ ] Proftpd
-- [ ] Knockd
-- [ ] Mariadb
-- [ ] php7-fpm
-- [ ] Nginx
+- [x] Knockd
+- [ ] Mariadb (bug https://bugs.alpinelinux.org/issues/9046)
+- [x] php7-fpm
+- [x] Nginx
+- [x] drush
+- [x] composer
 - [ ] letsencrypt
 - [ ] vhosts
-- [ ] redis
+- [x] redis
+- [x] zabbix-agent
+- [x] urbackup-client
 - [ ] git barre repos
-- [ ] zabbix-agent
-- [ ] urbackup-client
-- [ ] dotfiles and more
+- [ ] Proftpd
 
 ## how to use it
 on a fresh install
@@ -36,7 +40,6 @@ git clone https://figureslibres.io/gogs/bachir/alpine-web-server.git
 ```
 su
 cd alpine-web-server
-chmod a+x install.sh
 . install.sh
 
 ```
@@ -44,5 +47,3 @@ chmod a+x install.sh
 ```
 . bin/misc.sh
 ```
-
-## ref

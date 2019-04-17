@@ -36,14 +36,23 @@ apk add git
 git clone https://figureslibres.io/gogs/bachir/alpine-web-werver.git
 ```
 
-3 run the script as root
+3 you have to be root
 ```
 su
-cd alpine-web-server
-. install.sh
-
 ```
-4 all script in bin/ can be ran seperatly, but from the repos source exclusively
+
+4 install bash
+```
+cd alpine-web-server
+. bin/bash
+```
+
+5 run the full install
+```
+. install.sh
+```
+
+all script in bin/ can be ran seperatly, but from the repos source exclusively
 ```
 . bin/misc.sh
 ```

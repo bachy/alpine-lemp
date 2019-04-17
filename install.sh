@@ -23,7 +23,7 @@ fi
 _cwd="$(pwd)"
 
 . bin/upgrade.sh
-. bin/bash.sh
+# . bin/bash.sh
 . bin/misc.sh
 . bin/dotfiles.sh
 . bin/user.sh

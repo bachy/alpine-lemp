@@ -35,4 +35,4 @@ _cwd="$(pwd)"
 . bin/lemp.sh
 # . bin/vhost.sh
 . bin/zabbix.sh
-# . bin/urbackup.sh
+. bin/urbackup.sh

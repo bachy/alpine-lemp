@@ -59,7 +59,7 @@ echo -e '
 '
 echo -e "Installing PHP 7.0"
 sleep 3
-apk add php7 php7-fpm php7-pdo_mysql php7-opcache php7-curl php7-mbstring php7-zip php7-xml php7-gd php7-mcrypt php7-imagick php7-phar
+apk add php7 php7-fpm php7-pdo_mysql php7-opcache php7-curl php7-mbstring php7-zip php7-xml php7-gd php7-mcrypt php7-imagick php7-phar php7-json
 
 echo -e "Configuring PHP"
 

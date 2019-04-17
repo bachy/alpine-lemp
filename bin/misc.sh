@@ -27,4 +27,4 @@ TIMEZONE="Europe/Paris"
 cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
 echo "${TIMEZONE}" > /etc/timezone
 
-echo -e "\033[92;1mMisc done \033[Om"
+echo -e "Misc done"

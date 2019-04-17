@@ -33,7 +33,7 @@ fi
 
 # Install the dependencies UrBackup needs
 # apt install build-essential "g++" "libcrypto++-dev" libz-dev -y
-apk add linux-headers "g++" zlib zlid-dev "crypto++@testing" "crypto++dev@testing"
+apk add linux-headers "g++" zlib zlid-dev "crypto++@testing" "crypto++-dev@testing"
 
 ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
 

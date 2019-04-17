@@ -14,7 +14,7 @@ sleep 2
 # TODO use awall instead of ufw ?
 
 # ufw
-apk add ufw
+apk add ufw@testing
 ufw allow ssh # knockd will open the ssh port
 ufw allow http
 ufw allow https

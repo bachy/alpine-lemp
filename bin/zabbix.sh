@@ -68,7 +68,7 @@ sed -i "s|#\ Include=$|Include= $_agent_conf_d|g" /etc/zabbix/zabbix_agentd.conf
 # NGINX
 # https://github.com/sfuerte/zbx-nginx
 # nginxconf already included in default.nginxconf asset
-sed -i "s/# allow CURRENT-SERVER-IP/allow $_cur_ip/g" /etc/nginx/sites-available/default
+sed -i "s/# allow CURRENT-SERVER-IP/allow $_cur_ip/g" /etc/nginx/conf.d/default.conf
 cp "$_assets"/zabbix/userparameter_nginx.conf "$_agent_conf_d"/
 mkdir /etc/zabbix/zabbix_agentd.scripts
 cp "$_assets"/zabbix/scripts/nginx-stat.py /etc/zabbix/zabbix_agentd.scripts/
@@ -86,8 +86,8 @@ ufw allow from "$_ip" to any port 22
 ufw allow from "$_ip" to any port 10050
 # ufw allow from "$_ip" to any port 10051
 
-rc-update add zabbix-agent
-service zabbix-agent restart
+rc-update add zabbix-agentd
+service zabbix-agentd restart
 
 echo -e "Zabbix-agent installed and configured, please add the host $_host_name in your zabbix-server"
 echo -e "And import requested templates in assets/zabbix/templates/"

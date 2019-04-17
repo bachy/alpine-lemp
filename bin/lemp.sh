@@ -92,8 +92,8 @@ chown -R www:www /var/lib/nginx
 chown -R www:www /var/www/html
 
 mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.ori
-cp "$_assets"/default.nginxconf /etc/nginx/conf.d/default.conf
-cp "$_assets"/index.php /var/www/html/
+cp "$_assets"/lemp/default.nginxconf /etc/nginx/conf.d/default.conf
+cp "$_assets"/lemp/index.php /var/www/html/
 
 rc-update add nginx
 service nginx start

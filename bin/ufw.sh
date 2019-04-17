@@ -1,13 +1,12 @@
 #!/bin/sh
 
-echo -e '\033[35m
-    ______________  _______       _____    __    __
-   / ____/  _/ __ \/ ____/ |     / /   |  / /   / /
-  / /_   / // /_/ / __/  | | /| / / /| | / /   / /
- / __/ _/ // _, _/ /___  | |/ |/ / ___ |/ /___/ /___
-/_/   /___/_/ |_/_____/  |__/|__/_/  |_/_____/_____/
-\033[0m'
-echo -e "\033[35;1mInstalling ufw and setup firewall (allowing only ssh and http) \033[0m"
+echo -e '
+  _   _ _____      __
+ | | | | __\ \    / /
+ | |_| | _| \ \/\/ /
+  \___/|_|   \_/\_/
+'
+echo -e "Installing ufw and setup firewall (allowing only ssh and http)"
 
 . bin/checkroot.sh
 sleep 2
@@ -23,4 +22,4 @@ ufw allow https
 
 ufw enable
 ufw status verbose
-echo -e "\033[92;1mufw installed and firwall configured\033[Om"
+echo -e "ufw installed and firwall configured"

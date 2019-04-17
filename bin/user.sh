@@ -1,13 +1,12 @@
 #!/bin/sh
 
-echo -e '\033[35m
-   __  _______ __________
-  / / / / ___// ____/ __ \
- / / / /\__ \/ __/ / /_/ /
-/ /_/ /___/ / /___/ _, _/
-\____//____/_____/_/ |_|
-\033[0m'
-echo -e "\033[35;1mCreate new user (you will be asked a user name and a password) \033[0m"
+echo -e '
+  _   _
+ | | | |___ ___ _ _
+ | |_| (_-</ -_) ._|
+  \___//__/\___|_|
+'
+echo -e "Create new user (you will be asked a user name and a password)"
 
 . bin/checkroot.sh
 
@@ -37,10 +36,14 @@ done
 
 # read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 adduser "$user"
+
+sed -i "s/$user:\/bin\/ash/$user:\/bin\/bash/g" /etc/passwd
+
 # TODO limiting su to the admin group
 # echo "adding $user to admin group and limiting su to the admin group"
 # groupadd admin
 # usermod -a -G admin "$user"
 # allow admin group to su
 # dpkg-statoverride --update --add root admin 4750 /bin/su
-# echo -e "\033[92;1muser $user configured\033[Om"
+
+echo -e "user $user configured"

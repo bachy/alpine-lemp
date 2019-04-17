@@ -1,13 +1,12 @@
 #!/bin/sh
 
-echo '\033[35m
-    __  ______    ______
-   /  |/  /   |  /  _/ /
-  / /|_/ / /| |  / // /
- / /  / / ___ |_/ // /___
-/_/  /_/_/  |_/___/_____/
-\033[0m'
-echo "\033[35;1mEnable mail sending for php \033[0m"
+echo '
+  __  __      _ _
+ |  \/  |__ _(_) |
+ | |\/| / _` | | |
+ |_|  |_\__,_|_|_|
+'
+echo "Enable mail sending for php"
 
 . bin/checkroot.sh
 
@@ -27,6 +26,9 @@ fi
 sleep 2
 
 apk add mailx postfix
+
+mkdir /var/mail
+postmap /etc/postfix/aliases
 
 rc-update add postfix
 /etc/init.d/postfix start

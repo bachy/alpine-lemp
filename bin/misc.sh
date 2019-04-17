@@ -1,13 +1,11 @@
 #!/bin/sh
 
-echo -e '\033[35m
-    __  ____
-   /  |/  (_)_________
-  / /|_/ / / ___/ ___/
- / /  / / (__  ) /__
-/_/  /_/_/____/\___/
-
-\033[0m'
+echo -e '
+  __  __ _
+ |  \/  (_)___ __
+ | |\/| | (_-</ _|
+ |_|  |_|_/__/\__|
+'
 
 . bin/checkroot.sh
 
@@ -24,5 +22,9 @@ apk add vim curl
 # dpkg-reconfigure tzdata
 apk add tmux etckeeper htop lynx unzip # needrestart
 
+apk add tzdata
+TIMEZONE="Europe/Paris"
+cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
+echo "${TIMEZONE}" > /etc/timezone
 
 echo -e "\033[92;1mMisc done \033[Om"

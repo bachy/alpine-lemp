@@ -22,8 +22,8 @@ fi
 # get the current position
 _cwd="$(pwd)"
 
-. bin/upgrade
-. bin/bash
+. bin/upgrade.sh
+. bin/bash.sh
 . bin/misc.sh
 . bin/dotfiles.sh
 . bin/user.sh

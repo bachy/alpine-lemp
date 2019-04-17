@@ -33,7 +33,7 @@ apk add git
 
 2 clone the repo
 ```
-git clone https://figureslibres.io/gogs/bachir/alpine-web-server.git
+git clone https://figureslibres.io/gogs/bachir/alpine-web-werver.git
 ```
 
 3 run the script as root

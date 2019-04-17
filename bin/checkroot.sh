@@ -2,7 +2,9 @@
 
 echo -e "checking root"
 
-if [ "$EUID" -ne 0 ]; then
+if [ "$EUID" = 0 ]; then
   echo -e "Please run as root"
   exit
+else
+  echo -e "root ok"
 fi

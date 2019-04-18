@@ -45,9 +45,9 @@ if [ "$yn" = "Y" ] || [ "$yn" = "y" ]; then
   echo -e "Please see this bug https://bugs.alpinelinux.org/issues/9046"
   echo "http://dl-cdn.alpinelinux.org/alpine/v3.7/main" >> /etc/apk/repositories
   # echo -e "mariadb<10.1.99\nmariadb-client<10.1.99\nmariadb-common<10.1.99" >> /etc/apk/world
-  sed -i "s|mariadb|mariadb<10.1.99|g" /etc/apk/world
-  sed -i "s|mariadb-client|mariadb-client<10.1.99|g" /etc/apk/world
-  sed -i "s|mariadb-common|mariadb-common<10.1.99|g" /etc/apk/world
+  sed -i "s|^mariadb$|mariadb<10.1.99|g" /etc/apk/world
+  sed -i "s|^mariadb-client$|mariadb-client<10.1.99|g" /etc/apk/world
+  sed -i "s|^mariadb-common$|mariadb-common<10.1.99|g" /etc/apk/world
   apk update && apk upgrade
 fi
 

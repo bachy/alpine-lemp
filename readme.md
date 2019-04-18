@@ -17,6 +17,7 @@ each alpine linux stable release has it's branch (master is a clone of the last 
 - [x] Fail2ban
 - [x] Knockd
 - [x] Mariadb (bug https://bugs.alpinelinux.org/issues/9046)
+- [ ] mysql backups
 - [x] php7-fpm (7.2)
 - [x] Nginx
 - [x] drush
@@ -26,8 +27,10 @@ each alpine linux stable release has it's branch (master is a clone of the last 
 - [x] redis
 - [x] zabbix-agent (4)
 - [x] urbackup-client
+- [ ] solr
 - [ ] git barre repos
 - [ ] Proftpd
+- [x] passwd generator
 
 ## how to use it
 on a fresh install

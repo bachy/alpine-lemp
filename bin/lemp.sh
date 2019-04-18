@@ -34,20 +34,32 @@ echo -e '
 '
 echo -e "installing Mysql"
 sleep 3
-apk add mariadb mariadb-client
 
 # https://bugs.alpinelinux.org/issues/9046
+echo -n "are Maridb databases strored in a zfs file system? [y|n] "
+read yn
+if [ "$yn" = "Y" ] || [ "$yn" = "y" ]; then
+  echo -e "Stick with mariadb 10.1.x due to incompatibility of newer version with zfs"
+  echo -e "Please see this bug https://bugs.alpinelinux.org/issues/9046"
+  echo "http://dl-5.alpinelinux.org/alpine/v3.7/main" >> /etc/apk/repositories
+  echo -e "mariadb<10.1.99\nmariadb-client<10.1.99\nmariadb-common<10.1.99" >> /etc/apk/world
+  apk update
+fi
 
-DB_DATA_PATH="/var/lib/mysql"
-DB_ROOT_PASS="mariadb_root_password"
-DB_USER="mariadb_user"
-DB_PASS="mariadb_user_password"
-MAX_ALLOWED_PACKET="200M"
+apk add mariadb mariadb-client
 
-mysql_install_db --user=mysql --datadir=${DB_DATA_PATH}
+mysql_install_db --user=mysql --datadir=/var/lib/mysql
 
 rc-update add mariadb
 service mariadb start
+
+mysql_secure_installation
+
+sed -i "s|max_allowed_packet\s*=\s*1M|max_allowed_packet = 200M|g" /etc/mysql/my.cnf
+sed -i "s|max_allowed_packet\s*=\s*16M|max_allowed_packet = 200M|g" /etc/mysql/my.cnf
+
+service mariadb restart
+
 echo -e "mysql installed"
 
 echo -e '

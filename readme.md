@@ -64,3 +64,6 @@ all script in bin/ can be ran seperatly, but from the repos source exclusively
 ```
 . bin/misc.sh
 ```
+
+## ref
+[Alpine Linux wiki](https://wiki.alpinelinux.org)

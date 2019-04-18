@@ -22,16 +22,18 @@ if [ ! -d "$_assets" ]; then
   fi
 fi
 
+apk add zabbix-agent
+
 echo -n "do you want to limit zabbix-agent to 3.4? [y|n] "
 read yn
 if [ "$yn" = "Y" ] || [ "$yn" = "y" ]; then
   echo -e "Stick with zabbix-agent 3.4"
   echo "http://dl-cdn.alpinelinux.org/alpine/v3.8/main" >> /etc/apk/repositories
-  echo -e "zabbix-agent<3.4.99" >> /etc/apk/world
-  apk update
+  # echo -e "zabbix-agent<3.4.99" >> /etc/apk/world
+  sed -i "s|zabbix-agent|zabbix-agent<3.4.99|g" /etc/apk/world
+  apk update && apk upgrade
 fi
 
-apk add zabbix-agent
 
 # configure
 echo -n "Please provide the current server's public ip : "

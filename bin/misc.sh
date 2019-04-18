@@ -27,4 +27,6 @@ TIMEZONE="Europe/Paris"
 cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime
 echo "${TIMEZONE}" > /etc/timezone
 
+rc-service crond start && rc-update add crond
+
 echo -e "Misc done"

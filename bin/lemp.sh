@@ -130,7 +130,7 @@ echo -e '
 '
 echo -e "Installing Redis"
 sleep 3
-apk add redis php7-pecl-redis
+apk add redis php7-pecl-redis@edgecommunity
 
 # TODO set maxmemory=2gb
 # TODO set maxmemory-policy=volatile-lru

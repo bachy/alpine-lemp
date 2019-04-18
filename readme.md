@@ -1,10 +1,9 @@
 # Install web server and secure it on alpine linux 3.8
 
 ## Branches
-each alpine linux stable release has it's branch
-master is a clone of the last one
-3.8
-3.9 (master)
+each alpine linux stable release has it's branch (master is a clone of the last one)
+- [3.8](https://figureslibres.io/gogs/bachir/alpine-web-werver/src/3.8)
+- [3.9](https://figureslibres.io/gogs/bachir/alpine-web-werver/src/3.8) ([master](https://figureslibres.io/gogs/bachir/alpine-web-werver))
 
 ## Features
 

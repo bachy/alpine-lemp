@@ -41,7 +41,7 @@ read yn
 if [ "$yn" = "Y" ] || [ "$yn" = "y" ]; then
   echo -e "Stick with mariadb 10.1.x due to incompatibility of newer version with zfs"
   echo -e "Please see this bug https://bugs.alpinelinux.org/issues/9046"
-  echo "http://dl-5.alpinelinux.org/alpine/v3.7/main" >> /etc/apk/repositories
+  echo "http://dl-cdn.alpinelinux.org/alpine/v3.7/main" >> /etc/apk/repositories
   echo -e "mariadb<10.1.99\nmariadb-client<10.1.99\nmariadb-common<10.1.99" >> /etc/apk/world
   apk update
 fi

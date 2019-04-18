@@ -3,8 +3,8 @@
 ## Branches
 each alpine linux stable release has it's branch
 master is a clone of the last one
-3.8
-3.9 (master)
+- 3.8
+- 3.9 (master)
 
 ## Features
 

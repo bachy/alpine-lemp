@@ -11,10 +11,10 @@ echo -e "\033[35;1mThis script has been tested only on Alpine Linux \033[0m"
 
 . bin/checkroot.sh
 
-echo -n "Should we start? [Y|n] "
+echo -n "Should we start? [y|n] "
 read yn
 yn=${yn:-y}
-if [ "$yn" != "y" ]; then
+if [ "$yn" != "y" ] && [ "$yn" != "Y" ]; then
   echo -e "aborting script!"
   exit
 fi

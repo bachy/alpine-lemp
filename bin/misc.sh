@@ -29,4 +29,6 @@ echo "${TIMEZONE}" > /etc/timezone
 
 rc-service crond start && rc-update add crond
 
+git config --global core.safecrlf false
+
 echo -e "Misc done"

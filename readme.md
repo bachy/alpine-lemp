@@ -16,7 +16,7 @@ each alpine linux stable release has it's branch (master is a clone of the last 
 - [x] Ufw (may be eventualy replaced by awall ?)
 - [x] Fail2ban
 - [x] Knockd
-- [ ] Mariadb (bug https://bugs.alpinelinux.org/issues/9046)
+- [x] Mariadb (bug https://bugs.alpinelinux.org/issues/9046)
 - [x] php7-fpm (7.2)
 - [x] Nginx
 - [x] drush

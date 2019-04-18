@@ -1,6 +1,11 @@
-# Install web server and secure it on alpine linux
+# Install web server and secure it on alpine linux 3.8
 
-## 3.9 branch for alpine linux 3.9
+## Branches
+each alpine linux release version has it's branch
+3.8
+3.9
+
+## Features
 
 - [x] upgrade
 - [x] bash
@@ -12,14 +17,14 @@
 - [x] Fail2ban
 - [x] Knockd
 - [ ] Mariadb (bug https://bugs.alpinelinux.org/issues/9046)
-- [x] php7-fpm
+- [x] php7-fpm (7.1)
 - [x] Nginx
 - [x] drush
 - [x] composer
 - [ ] letsencrypt
 - [ ] vhosts
 - [x] redis
-- [x] zabbix-agent
+- [x] zabbix-agent (3.4)
 - [x] urbackup-client
 - [ ] git barre repos
 - [ ] Proftpd

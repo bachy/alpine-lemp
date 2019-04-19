@@ -31,7 +31,7 @@ _cwd="$(pwd)"
 . bin/ufw.sh
 . bin/fail2ban.sh
 . bin/knockd.sh
-# . bin/email.sh
+. bin/email.sh
 . bin/lemp.sh
 . bin/mysqlbackup.sh
 # . bin/vhost.sh

@@ -22,10 +22,9 @@ if [ ! -d "$_assets" ]; then
   fi
 fi
 
-# http://www.sycha.com/lamp-setup-debian-linux-apache-mysql-php#anchor13
 sleep 2
 
-apk add mailx postfix
+apk add postfix mailx
 
 mkdir /var/mail
 postmap /etc/postfix/aliases
@@ -33,38 +32,48 @@ postmap /etc/postfix/aliases
 rc-update add postfix
 /etc/init.d/postfix start
 
+# https://www.cyberciti.biz/faq/how-to-find-out-the-ip-address-assigned-to-eth0-and-display-ip-only/
+_IP=$(ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
+_MASK=$(ifconfig eth0 | grep 'inet addr:' | cut -d: -f4)
 
+# echo -n "Please provide a bounce email address: "
+# read _bounce_email
 
+# DMARC
 
-# dkim spf
-# echo "\033[35;1mConfiguring DKIM \033[0m"
-# while [ "$installdkim" != "y" ] && [ "$installdkim" != "n" ]
-# do
-#   echo -n "Should we install dkim for exim4 ? [y|n] "
-#   read installdkim
-# done
-# if [ "$installdkim" = "y" ]; then
-#   echo -n "Choose a domain for dkim (same domain as you chose before for exim4): "
-#   read domain
-#   selector=$(date +%Y%m%d)
-#
-#   mkdir /etc/exim4/dkim
-#   openssl genrsa -out /etc/exim4/dkim/"$domain"-private.pem 1024 -outform PEM
-#   openssl rsa -in /etc/exim4/dkim/"$domain"-private.pem -out /etc/exim4/dkim/"$domain".pem -pubout -outform PEM
-#   chown root:Debian-exim /etc/exim4/dkim/"$domain"-private.pem
-#   chmod 440 /etc/exim4/dkim/"$domain"-private.pem
-#
-#   cp "$_assets"/exim4_dkim.conf /etc/exim4/conf.d/main/00_local_macros
-#   sed -i -r "s/DOMAIN_TO_CHANGE/$domain/g" /etc/exim4/conf.d/main/00_local_macros
-#   sed -i -r "s/DATE_TO_CHANGE/$selector/g" /etc/exim4/conf.d/main/00_local_macros
-#
-#   update-exim4.conf
-#   systemctl restart exim4
-#   echo "please create a TXT entry in your dns zone : $selector._domainkey.$domain \n"
-#   echo "your public key is : \n"
-#   cat /etc/exim4/dkim/"$domain".pem
-#   echo "press any key to continue."
-#   read continu
-# else
-#   echo 'dkim not installed'
-# fi
+# reverse dns
+
+# dkim
+echo "Configuring DKIM"
+
+apk add opendkim opendkim-utils
+
+mkdir /etc/opendkim/keys
+opendkim-genkey -b 2048 -d "$HOSTNAME" -s "$HOSTNAME".dkim --directory=/etc/opendkim/keys/
+
+chown opendkim:opendkim /etc/opendkim/keys/*
+
+mv /etc/opendkim/opendkim.conf /etc/opendkim/opendkim.conf.back
+cp "$_assets"/opendkim/opendkim.conf /etc/opendkim.conf
+
+echo "*@$HOSTNAME $HOSTNAME" > /etc/opendkim/signtable
+echo "$HOSTNAME $HOSTNAME:mail:/etc/opendkim/keys/$HOSTNAME.dkim.private" > /etc/opendkim/keytable
+echo -e "localhost\n127.0.0.1\n$HOSTNAME\n$_IP/$_MASK" > /etc/internalhosts
+echo -e "smtpd_milters = unix:/run/opendkim/opendkim.sock\nnon_smtpd_milters = unix:/run/opendkim/opendkim.sock" >> /etc/postfix/main.cf
+
+rc-update add opendkim
+service opendkim start
+service postfix restart
+echo "please create a DKIM entry in your dns zone : mail._domainkey.$HOSTNAME \n"
+echo "your public key is : \n"
+cat /etc/opendkim/keys/"$HOSTNAME".dkim.txt
+
+echo -e "SPF"
+echo -e "you should edit an spf entry for $HOSTNAME in your dns zone :"
+echo -e "v=spf1 a mx ip4:$_IP"
+
+echo -e "MX"
+echo -e "If it does not exists, you should create an mx zone record for $HOSTNAME"
+
+echo "press any key to continue."
+read continu

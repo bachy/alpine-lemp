@@ -33,6 +33,7 @@ _cwd="$(pwd)"
 . bin/knockd.sh
 # . bin/email.sh
 . bin/lemp.sh
+. bin/mysqlbackup.sh
 # . bin/vhost.sh
 . bin/zabbix.sh
 . bin/urbackup.sh

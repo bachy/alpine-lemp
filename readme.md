@@ -25,7 +25,7 @@ each alpine linux stable release has it's branch (master is a clone of the last 
 - [ ] letsencrypt
 - [ ] vhosts
 - [x] redis
-- [x] zabbix-agent (4)
+- [x] zabbix-agent (3.4 || 4)
 - [x] urbackup-client
 - [ ] solr
 - [ ] git barre repos

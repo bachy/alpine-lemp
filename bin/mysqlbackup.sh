@@ -36,6 +36,6 @@ touch /var/spool/cron/crontabs/root
 crontab -l > /tmp/mycron
 echo "30 2 */2 * * /usr/local/bin/mysqlbackup.sh" >> /tmp/mycron
 crontab /tmp/mycron
-rm /tmp/mycron
+rm -f /tmp/mycron
 
 echo -e "mysql backup script installed"

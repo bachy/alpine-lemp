@@ -28,9 +28,10 @@ if [ "$yn" = "Y" ] || [ "$yn" = "y" ]; then
   echo -e "Stick with zabbix-agent 3.4"
   echo "http://dl-cdn.alpinelinux.org/alpine/v3.8/main" >> /etc/apk/repositories
   echo "http://dl-cdn.alpinelinux.org/alpine/v3.8/community" >> /etc/apk/repositories
-  echo -e "zabbix-agent<3.4.99" >> /etc/apk/world
+  # echo -e "zabbix-agent<3.4.99" >> /etc/apk/world
   apk update
-  apk upgrade
+  # apk upgrade
+  apk add 'zabbix-agent=~3.4'
 else
   apk add zabbix-agent
 fi
@@ -47,8 +48,6 @@ echo -n "Please provide the mysql root password : "
 read _root_mysql_passwd
 
 
-
-
 # configure zabbix agent
 sed -i "s#Server=127.0.0.1#Server=$_ip#g" /etc/zabbix/zabbix_agentd.conf
 sed -i "s#ServerActive=127.0.0.1#ServerActive=$_ip#g" /etc/zabbix/zabbix_agentd.conf
@@ -61,21 +60,21 @@ sed -i "s|#\ Include=$|Include= $_agent_conf_d|g" /etc/zabbix/zabbix_agentd.conf
 # apk
 # check for alpine security updates
 
-# # MYSQL
-# # https://serverfault.com/questions/737018/zabbix-user-parameter-mysql-status-setting-home
-# # create zabbix user home
-# mkdir /var/lib/zabbix
-# # generate random password for zabbix mysql user
-# _passwd="$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c12)"
-# # add mysql credentials to zabbix home
-# printf "[client]\n
-# user=zabbix\n
-# password=$_passwd" > /var/lib/zabbix/.my.cnf
-# # create zabbix mysql user
-# mysql -uroot -p"$_root_mysql_passwd" -e "CREATE USER 'zabbix' IDENTIFIED BY '$_passwd';"
-# mysql -uroot -p"$_root_mysql_passwd" -e "GRANT USAGE ON *.* TO 'zabbix'@'localhost' IDENTIFIED BY '$_passwd';"
-# # add zabbix-agent parameter
-# cp "$_assets"/zabbix/userparameter_mysql.conf "$_agent_conf_d"/
+# MYSQL
+# https://serverfault.com/questions/737018/zabbix-user-parameter-mysql-status-setting-home
+# create zabbix user home
+mkdir /var/lib/zabbix
+# generate random password for zabbix mysql user
+_passwd="$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c16)"
+# add mysql credentials to zabbix home
+printf "[client]\n
+user=zabbix\n
+password=$_passwd" > /var/lib/zabbix/.my.cnf
+# create zabbix mysql user
+mysql -uroot -p"$_root_mysql_passwd" -e "CREATE USER 'zabbix' IDENTIFIED BY '$_passwd';"
+mysql -uroot -p"$_root_mysql_passwd" -e "GRANT USAGE ON *.* TO 'zabbix'@'localhost' IDENTIFIED BY '$_passwd';"
+# add zabbix-agent parameter
+cp "$_assets"/zabbix/userparameter_mysql.conf "$_agent_conf_d"/
 
 # NGINX
 # https://github.com/sfuerte/zbx-nginx

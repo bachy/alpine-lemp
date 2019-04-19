@@ -38,12 +38,15 @@ fi
 
 
 # configure
-echo -n "Please provide the current server's public ip : "
-read _cur_ip
+# echo -n "Please provide the current server's public ip : "
+# read _cur_ip
+# https://www.cyberciti.biz/faq/how-to-find-out-the-ip-address-assigned-to-eth0-and-display-ip-only/
+_cur_ip=$(ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
+# echo -n "Please provide the hostname of this agent : "
+# read _host_name
+_host_name=$HOSTNAME
 echo -n "Please provide the zabbix-server's ip : "
 read _ip
-echo -n "Please provide the hostname of this agent : "
-read _host_name
 echo -n "Please provide the mysql root password : "
 read _root_mysql_passwd
 

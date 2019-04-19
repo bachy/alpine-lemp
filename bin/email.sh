@@ -64,9 +64,14 @@ echo -e "smtpd_milters = unix:/run/opendkim/opendkim.sock\nnon_smtpd_milters = u
 
 rc-update add opendkim
 service opendkim start
+
+usermod -a -G opendkim postfix
+
 service postfix restart
-echo "please create a DKIM entry in your dns zone : mail._domainkey.$HOSTNAME \n"
-echo "your public key is : \n"
+
+echo -e "DKIM"
+echo -e "please create a DKIM entry in your dns zone : mail._domainkey.$HOSTNAME \n"
+echo -e "your public key is : \n"
 cat /etc/opendkim/keys/"$HOSTNAME".dkim.txt
 
 echo -e "SPF"

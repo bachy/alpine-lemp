@@ -36,10 +36,11 @@ rc-update add postfix
 _IP=$(ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
 _MASK=$(ifconfig eth0 | grep 'inet addr:' | cut -d: -f4)
 
+# TODO: change bounce email
 # echo -n "Please provide a bounce email address: "
 # read _bounce_email
 
-# DMARC
+# TODO: DMARC
 
 # reverse dns
 
@@ -54,7 +55,7 @@ opendkim-genkey -b 2048 -d "$HOSTNAME" -s "$HOSTNAME".dkim --directory=/etc/open
 chown opendkim:opendkim /etc/opendkim/keys/*
 
 mv /etc/opendkim/opendkim.conf /etc/opendkim/opendkim.conf.back
-cp "$_assets"/opendkim/opendkim.conf /etc/opendkim.conf
+cp "$_assets"/opendkim/opendkim.conf /etc/opendkim/opendkim.conf
 
 echo "*@$HOSTNAME $HOSTNAME" > /etc/opendkim/signtable
 echo "$HOSTNAME $HOSTNAME:mail:/etc/opendkim/keys/$HOSTNAME.dkim.private" > /etc/opendkim/keytable

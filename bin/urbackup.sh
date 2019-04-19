@@ -54,14 +54,15 @@ make install
 # configure
 echo -n "Please provide the urbackup-server's ip : "
 read _ip
-echo -n "Please provide the internet_authkey of server : "
-read _authkey
-echo -n "Please provide the computer name of this client : "
-read _computername
+# echo -n "Please provide the internet_authkey of server : "
+# read _authkey
+# echo -n "Please provide the computer name of this client : "
+# read _computername
+_computername=$HOSTNAME
 
+# internet_authkey=$_authkey
 echo "internet_server=$_ip
 internet_server_port=55415
-internet_authkey=$_authkey
 internet_mode_enabled=true
 internet_image_backups_def=false
 default_dirs_def=/etc;var/www;/var/backups/mysql

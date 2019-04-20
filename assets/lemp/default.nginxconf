@@ -106,4 +106,7 @@ server {
 	  # allow CURRENT-SERVER-IP;
 	  deny all;
 	}
+
+  # website should not be displayed inside a <frame>, an <iframe> or an <object>
+  add_header X-Frame-Options DENY;
 }

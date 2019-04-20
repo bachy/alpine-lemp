@@ -34,6 +34,13 @@ _cwd="$(pwd)"
 . bin/email.sh
 . bin/lemp.sh
 . bin/mysqlbackup.sh
-# . bin/vhost.sh
+  whie [ "$vh" != "y" ] && [ "$vh" != "n" ]
+  do
+    echo -n "Should we install a vhost? [y|n] "
+    read vh
+  done
+  if [ "$vh" = "y" ]; then
+    . bin/vhost.sh
+  fi
 . bin/zabbix.sh
 . bin/urbackup.sh

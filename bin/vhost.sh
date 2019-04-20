@@ -94,11 +94,9 @@ cp "$_assets/vhosts/index.php" /var/www/"$_domain"/app/public_html/
 sed -i -r "s/DOMAIN\.LTD/$_domain/g" /var/www/"$_domain"/app/public_html/index.php
 
 #set proper right to user will handle the app
-chown -R root:admin  /var/www/"$_domain"/
-chmod -R g+w /var/www/"$_domain"/
-chmod -R g+r /var/www/"$_domain"/
-
-
+chown -R www:www  /var/www/"$_domain"/
+# chmod -R g+w /var/www/"$_domain"/
+# chmod -R g+r /var/www/"$_domain"/
 
 # create a shortcut to the site
 echo -n "Should we install a shortcut for a user? [Y|n] "
@@ -130,15 +128,18 @@ if [ "$yn" = "Y" ] || [ "$yn" = "y" ]; then
   echo -e "installing shortcut for '$user'";
 
   mkdir /home/"$user"/www/
-  chown "$user":admin /home/"$user"/www/
+  chown "$user":"$user" /home/"$user"/www/
   ln -s /var/www/"$_domain" /home/"$user"/www/"$_domain"
-  chown "$user":admin /home/"$user"/www/"$_domain"
-
+  chown "$user":"$user" /home/"$user"/www/"$_domain"
+  chown -R www:"$user" /home/"$user"/www/"$_domain"/app
+  chmod -R g+rw /home/"$user"/www/"$_domain"/app
 else
   echo -e 'no shortcut installed'
 fi
 # activate the vhost
 # ln -s /etc/nginx/sites-available/"$_domain".conf /etc/nginx/sites-enabled/"$_domain".conf
+
+nginx -t
 
 # restart nginx
 service nginx start

@@ -19,7 +19,7 @@ server {
   ssl_certificate "/etc/letsencrypt/live/DOMAIN.LTD/fullchain.pem";
   ssl_certificate_key "/etc/letsencrypt/live/DOMAIN.LTD/privkey.pem";
   ssl_dhparam /etc/nginx/ssl/certs/DOMAIN.LTD/dhparam.pem;
-  ssl_session_cache shared:SSL:1m;
+  # ssl_session_cache shared:SSL:1m;
   ssl_session_timeout 10m;
   ssl_ciphers HIGH:!aNULL:!MD5;
   #ssl_ciphers EECDH+CHACHA20:EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;

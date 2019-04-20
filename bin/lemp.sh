@@ -91,51 +91,31 @@ service php-fpm7 start
 echo -e "php installed"
 
 echo -e '
-            _
-  _ _  __ _(_)_ _ __ __
- | ` \/ _` | | ` \\ \ /
- |_||_\__, |_|_||_/_\_\
-      |___/
+       _         __  __        _      _       _
+  _ __| |_  _ __|  \/  |_  _  /_\  __| |_ __ (_)_ _
+ | `_ \ ` \| `_ \ |\/| | || |/ _ \/ _` | `  \| | ` \
+ | .__/_||_| .__/_|  |_|\_, /_/ \_\__,_|_|_|_|_|_||_|
+ |_|       |_|          |__/
 '
-echo -e "Installing Nginx"
-sleep 3
-apk add nginx
+echo -e "Installing phpMyAdmin"
+apk add phpmyadmin php7-mysqli
+service php-fpm7 restart
 
-adduser -D -g 'www' www
-mkdir -p /var/www/html
-chown -R www:www /var/lib/nginx
-chown -R www:www /var/www/html
+chmod +r /etc/phpmyadmin/config.inc.php
 
-mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.ori
-cp "$_assets"/lemp/default.nginxconf /etc/nginx/conf.d/default.conf
-cp "$_assets"/lemp/index.php /var/www/html/
-
-rc-update add nginx
-service nginx start
-echo -e "Nginx installed"
-
-# echo -e '
-#        _         __  __        _      _       _
-#   _ __| |_  _ __|  \/  |_  _  /_\  __| |_ __ (_)_ _
-#  | `_ \ ` \| `_ \ |\/| | || |/ _ \/ _` | `  \| | ` \
-#  | .__/_||_| .__/_|  |_|\_, /_/ \_\__,_|_|_|_|_|_||_|
-#  |_|       |_|          |__/
-# '
-# echo -e "Installing phpMyAdmin"
-# apk add phpmyadmin
 # ln -s /usr/share/phpmyadmin /var/www/html/
 # cp "$_assets"/nginx-phpmyadmin.conf > /etc/nginx/sites-available/phpmyadmin.conf
 # ln -s /etc/nginx/sites-available/phpmyadmin.conf /etc/nginx/sites-enabled/phpmyadmin.conf
-#
-# # echo -e "securing phpMyAdmin"
-# # sed -i "s/DirectoryIndex index.php/DirectoryIndex index.php\nAllowOverride all/"
-# # cp "$_assets"/phpmyadmin_htaccess > /usr/share/phpmyadmin/.htaccess
-# # echo -n "define a user name for phpmyadmin : "
-# # read un
-# # htpasswd -c /etc/phpmyadmin/.htpasswd $un
-# # service apache2 restart
-# echo -e "phpMyAdmin installed"
-# echo -e "You can access it at yourip/phpmyadmin"
+
+# echo -e "securing phpMyAdmin"
+# sed -i "s/DirectoryIndex index.php/DirectoryIndex index.php\nAllowOverride all/"
+# cp "$_assets"/phpmyadmin_htaccess > /usr/share/phpmyadmin/.htaccess
+# echo -n "define a user name for phpmyadmin : "
+# read un
+# htpasswd -c /etc/phpmyadmin/.htpasswd $un
+# service apache2 restart
+echo -e "phpMyAdmin installed"
+echo -e "You can access it at yourip/phpmyadmin"
 
 echo -e '
              _ _
@@ -184,3 +164,28 @@ chmod +x /usr/local/bin/drupal
 curl https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar -L -o /usr/local/bin/drush
 chmod +x /usr/local/bin/drush
 echo -e "Drush and DrupalConsoleinstalled"
+
+
+echo -e '
+            _
+  _ _  __ _(_)_ _ __ __
+ | ` \/ _` | | ` \\ \ /
+ |_||_\__, |_|_||_/_\_\
+      |___/
+'
+echo -e "Installing Nginx"
+sleep 3
+apk add nginx
+
+adduser -D -g 'www' www
+mkdir -p /var/www/html
+chown -R www:www /var/lib/nginx
+chown -R www:www /var/www/html
+
+mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.ori
+cp "$_assets"/lemp/default.nginxconf /etc/nginx/conf.d/default.conf
+cp "$_assets"/lemp/index.php /var/www/html/
+
+rc-update add nginx
+service nginx start
+echo -e "Nginx installed"

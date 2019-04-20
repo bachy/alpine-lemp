@@ -133,6 +133,8 @@ if [ "$yn" = "Y" ] || [ "$yn" = "y" ]; then
   chown "$user":"$user" /home/"$user"/www/"$_domain"
   chown -R www:"$user" /home/"$user"/www/"$_domain"/app
   chmod -R g+rw /home/"$user"/www/"$_domain"/app
+
+  . bin/gitdeploy.sh
 else
   echo -e 'no shortcut installed'
 fi

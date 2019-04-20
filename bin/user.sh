@@ -40,10 +40,14 @@ adduser "$user"
 sed -i "s/$user:\/bin\/ash/$user:\/bin\/bash/g" /etc/passwd
 
 # TODO limiting su to the admin group
-# echo "adding $user to admin group and limiting su to the admin group"
-# groupadd admin
-# usermod -a -G admin "$user"
-# allow admin group to su
-# dpkg-statoverride --update --add root admin 4750 /bin/su
-
+whie [ "$vh" != "y" ] && [ "$vh" != "n" ]
+do
+  echo -n "Should we allow $user to su? [y|n] "
+  read yn
+done
+if [ "$yn" = "y" ]; then
+  echo "adding $user to admin group"
+  # admin group is created by misc
+  usermod -a -G admin "$user"
+fi
 echo -e "user $user configured"

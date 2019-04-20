@@ -31,4 +31,8 @@ rc-service crond start && rc-update add crond
 
 git config --global core.safecrlf false
 
+echo "limiting su to the admin group"
+groupadd admin
+echo -e "auth       required   pam_wheel.so    group=admin" >> /etc/pam.d/su
+
 echo -e "Misc done"

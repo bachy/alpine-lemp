@@ -103,19 +103,14 @@ service php-fpm7 restart
 
 chmod +r /etc/phpmyadmin/config.inc.php
 
-# ln -s /usr/share/phpmyadmin /var/www/html/
-# cp "$_assets"/nginx-phpmyadmin.conf > /etc/nginx/sites-available/phpmyadmin.conf
-# ln -s /etc/nginx/sites-available/phpmyadmin.conf /etc/nginx/sites-enabled/phpmyadmin.conf
-
-# echo -e "securing phpMyAdmin"
-# sed -i "s/DirectoryIndex index.php/DirectoryIndex index.php\nAllowOverride all/"
-# cp "$_assets"/phpmyadmin_htaccess > /usr/share/phpmyadmin/.htaccess
-# echo -n "define a user name for phpmyadmin : "
-# read un
-# htpasswd -c /etc/phpmyadmin/.htpasswd $un
+echo -e "securing phpMyAdmin"
+_pass="$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c8)"
+_encrypted=$(openssl passwd -apr1 $_pass)
+echo -e "pma:$_encrypted" > /etc/nginx/passwds
 # service apache2 restart
 echo -e "phpMyAdmin installed"
 echo -e "You can access it at yourip/phpmyadmin"
+echo -e "please note the credentials user: pma passwd:$_pass"
 
 echo -e '
              _ _

@@ -33,6 +33,8 @@ server {
 
 	location /phpmyadmin {
 		root /usr/share/webapps/;
+		auth_basic "Admin Login";
+    auth_basic_user_file passwds;
 
     # Deny static files
     location ~ ^/phpMyAdmin/(README|LICENSE|ChangeLog|DCO)$ {

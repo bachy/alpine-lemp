@@ -89,12 +89,28 @@ if [ "$yn" = "yes" ]; then
     read _drupal
   done
 
-
-  # setup bare repositorie to push to
+  echo "seting up bare repositorie to push to"
   mkdir /home/"$user"/git-repos
   mkdir /home/"$user"/git-repos/"$_domain".git
   cd /home/"$user"/git-repos/"$_domain".git
   git init --bare
+
+  echo "creating hooks that will update the site repo"
+  cp "$_assets"/gitdeploy/git-post-receive /home/"$user"/git-repos/"$_domain".git/hooks/post-receive
+  sed -i -r "s#PRODDIR=\"www\"#PRODDIR=\"/home/$user/www/$_domain\"#g" /home/"$user"/git-repos/"$_domain".git/hooks/post-receive
+  chown -R "$user":"$user" /home/"$user"/git-repos
+  chmod +x /home/"$user"/git-repos/"$_domain".git/hooks/post-receive
+
+  echo "seting up git repo on site folder"
+  rm -rf /home/"$user"/www/"$_domain"/app/*
+  cd /home/"$user"/www/"$_domain"/app
+  git init
+  # link to the bare repo
+  git remote add origin /home/"$user"/git-repos/"$_domain".git
+  chown -R www:"$user" /home/"$user"/www/"$_domain"/app
+  chmod -R g+rw /home/"$user"/www/"$_domain"/app
+  git remote -v
+  git status
 
   echo "adding deploy script"
   if [ "$_drupal" = "yes" ]; then
@@ -102,35 +118,15 @@ if [ "$yn" = "yes" ]; then
   else
     cp "$_assets"/gitdeploy/deploy-simple.sh /home/"$user"/www/"$_domain"/deploy.sh
   fi
+  chown "$user":"$user" /home/"$user"/www/"$_domain"/deploy.sh
+  chmod +x /home/"$user"/www/"$_domain"/deploy.sh
 
-  echo "creating hooks that will update the site repo"
-  cp "$_assets"/gitdeploy/git-post-receive /home/"$user"/git-repos/"$_domain".git/hooks/post-receive
-
-  sed -i -r "s#PRODDIR=\"www\"#PRODDIR=\"/home/$user/www/$_domain\"#g" /home/"$user"/git-repos/"$_domain".git/hooks/post-receive
-
-  chown -R "$user":"$user" /home/"$user"/git-repos
-
-  chmod +x /home/"$user"/git-repos/"$_domain".git/hooks/post-receive
-
-  # setup git repo on site folder
-  cd /home/"$user"/www/"$_domain"/app
-  rm ./*
-  git init
-  # link to the bare repo
-  git remote add origin /home/"$user"/git-repos/"$_domain".git
-
-  chown -R www:"$user" /home/"$user"/www/"$_domain"/app
-  chmod -R g+rw /home/"$user"/www/"$_domain"/app
-
-  _cur_ip=$(ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
-
-
-  cd "$_cwd"
   # done
+  _cur_ip=$(ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
   echo "git repos for $_domain install succeed"
   echo "your site stay now to /home/$user/www/$_domain/app"
   echo "you can push updates on prod branch through $user@$_cur_ip:git-repositories/$_domain.git"
-  echo "* * *"
+  cd "$_cwd"
 else
   echo "Git barre repo creation aborted"
 fi

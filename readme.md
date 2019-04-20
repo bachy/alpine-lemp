@@ -62,10 +62,8 @@ cd alpine-web-server
 . install.sh
 ```
 
-all script in bin/ can be ran seperatly, but from the repos source exclusively
-```
-. bin/misc.sh
-```
+All script in bin/ can be ran seperatly, but from the repos source exclusively eg: ```. bin/vhost.sh```. Be aware that all scripts need bash and some depends on packages and config installed by bin/misc.sh, run it once right after bin/bash.sh if you wont use the full install.sh.
+
 
 ## ref
 [Alpine Linux wiki](https://wiki.alpinelinux.org)

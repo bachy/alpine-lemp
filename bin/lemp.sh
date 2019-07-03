@@ -142,7 +142,7 @@ echo -e "Installing Composer"
 sleep 3
 export COMPOSER_HOME=/usr/local/composer
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
+composer about
 echo -e "Composer installed"
 
 
@@ -156,8 +156,10 @@ echo -e "Installing Drush and DrupalConsole"
 sleep 3
 curl https://drupalconsole.com/installer -L -o /usr/local/bin/drupal
 chmod +x /usr/local/bin/drupal
+drupal about
 curl https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar -L -o /usr/local/bin/drush
 chmod +x /usr/local/bin/drush
+
 echo -e "Drush and DrupalConsoleinstalled"
 
 

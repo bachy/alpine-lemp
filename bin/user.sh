@@ -40,7 +40,7 @@ adduser "$user"
 sed -i "s/$user:\/bin\/ash/$user:\/bin\/bash/g" /etc/passwd
 
 # TODO limiting su to the admin group
-whie [ "$vh" != "y" ] && [ "$vh" != "n" ];
+while [ "$vh" != "y" ] && [ "$vh" != "n" ]
 do
   echo -n "Should we allow $user to su? [y|n] "
   read yn

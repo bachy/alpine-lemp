@@ -43,7 +43,7 @@ apk add git
 
 2 clone the repo
 ```
-git clone -b 3.9 --single-branch https://figureslibres.io/gogs/bachir/alpine-web-werver.git
+git clone -b 3.10 --single-branch https://figureslibres.io/gogs/bachir/alpine-web-werver.git
 ```
 
 3 you have to be root

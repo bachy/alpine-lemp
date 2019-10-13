@@ -38,12 +38,16 @@ apk add linux-headers "g++" zlib zlib-dev "crypto++@testing" "crypto++-dev@testi
 ln -s /usr/lib/libcryptopp.so /usr/lib/libcryptopp.so.5.6
 
 # Download the UrBackup client source files and extract them
-wget -P /tmp/ https://hndl.urbackup.org/Client/latest/urbackup-client-2.3.4.0.tar.gz
+# wget -P /tmp/ https://hndl.urbackup.org/Client/latest/urbackup-client-2.3.4.0.tar.gz
+wget -P /tmp/ https://hndl.urbackup.org/Client/2.4.8/urbackup-client-2.4.8.0.tar.gz
+
 cd /tmp
-tar xzf /tmp/urbackup-client-2.3.4.0.tar.gz
+# tar xzf /tmp/urbackup-client-2.3.4.0.tar.gz
+tar xzf /tmp/urbackup-client-2.4.8.0.tar.gz
 
 # Build the UrBackup client and install it
-cd /tmp/urbackup-client-2.3.4.0
+# cd /tmp/urbackup-client-2.3.4.0
+cd /tmp/urbackup-client-2.4.8.0.tar.gz
 ./configure --enable-headless
 make -j4
 make install
@@ -67,7 +71,9 @@ internet_mode_enabled=true
 internet_image_backups_def=false
 default_dirs_def=/etc;/var/www;/var/backups/mysql
 startup_backup_delay_def=3
-computername=$_computername" > /usr/local/var/urbackup/data/settings.cfg
+computername=$_computername" > /etc/conf.d/urbackupclient
+
+# /usr/local/var/urbackup/data/settings.cfg
 
 # firewall
 ufw allow from "$_ip" to any port 35621

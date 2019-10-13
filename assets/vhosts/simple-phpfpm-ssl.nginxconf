@@ -12,7 +12,7 @@ server {
 
   server_name DOMAIN.LTD;
 
-  root /var/www/DOMAIN.LTD/app/public_html;
+  root /var/www/DOMAIN.LTD/app/web;
   index index.html index.php;
 
   charset utf-8;

@@ -12,7 +12,7 @@ server {
 
   server_name DOMAIN.LTD;
 
-  root /var/www/DOMAIN.LTD/app/public_html;
+  root /var/www/DOMAIN.LTD/app/web;
 
   #SSL Certificates
   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;

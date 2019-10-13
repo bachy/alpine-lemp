@@ -87,11 +87,11 @@ fi
 cp "$_assets/vhosts/$_conffile" /etc/nginx/conf.d/"$_domain".conf
 sed -i -r "s/DOMAIN\.LTD/$_domain/g" /etc/nginx/conf.d/"$_domain".conf
 
-mkdir -p /var/www/"$_domain"/app/public_html
+mkdir -p /var/www/"$_domain"/app/web
 mkdir /var/www/"$_domain"/log
 
-cp "$_assets/vhosts/index.php" /var/www/"$_domain"/app/public_html/
-sed -i -r "s/DOMAIN\.LTD/$_domain/g" /var/www/"$_domain"/app/public_html/index.php
+cp "$_assets/vhosts/index.php" /var/www/"$_domain"/app/web/
+sed -i -r "s/DOMAIN\.LTD/$_domain/g" /var/www/"$_domain"/app/web/index.php
 
 #set proper right to user will handle the app
 chown -R www:www  /var/www/"$_domain"/

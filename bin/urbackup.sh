@@ -65,7 +65,7 @@ echo "internet_server=$_ip
 internet_server_port=55415
 internet_mode_enabled=true
 internet_image_backups_def=false
-default_dirs_def=/etc;var/www;/var/backups/mysql
+default_dirs_def=/etc;/var/www;/var/backups/mysql
 startup_backup_delay_def=3
 computername=$_computername" > /usr/local/var/urbackup/data/settings.cfg
 

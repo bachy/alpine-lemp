@@ -17,27 +17,35 @@ sleep 3
 echo -n "Please provide the mysql root passwd : "
 read _root_mysql_passwd
 
-mysql -u root -p $_root_mysql_passwd -e "show databases;"
+mysql -u root -p$_root_mysql_passwd -e "show databases;"
 
-echo -n "Enter db name: "
-read db
-while [ "$db" = "" ]
+echo -n "Enter new db name: "
+read db_name
+while [ "$db_name" = "" ]
 do
-  read -p "enter a db name ? " db
-  if [ "$db" != "" ]; then
+  read -p "enter a db name ? " db_name
+  if [ "$db_name" != "" ]; then
     # TODO check if db already exists
-    # if id "$db" >/dev/null 2>&1; then
-    #   echo "user $db alreday exists, you must provide a non existing user name."
+    # if id "$db_name" >/dev/null 2>&1; then
+    #   echo "user $db_name alreday exists, you must provide a non existing user name."
     #   db=""
     # else
-      read -p "is db name $db correcte [y|n] " validated
+      read -p "is db name $db_name correcte [y|n] " validated
       if [ "$validated" = "y" ]; then
         break
       else
-        db=""
+        db_name=""
       fi
     # fi
   fi
 done
 
-# mysql -u root -p $_root_mysql_passwd
+# generate random password for zabbix mysql user
+_passwd="$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c16)"
+
+# create zabbix mysql user
+mysql -u root -p$_root_mysql_passwd -e "CREATE DATABASE $db_name;"
+mysql -u root -p$_root_mysql_passwd -e "CREATE USER '$db_name'@'localhost' IDENTIFIED BY '$_passwd';"
+mysql -u root -p$_root_mysql_passwd -e "GRANT USAGE ON '$db_name'.* TO '$db_name'@'localhost' IDENTIFIED BY '$_passwd';"
+
+mysql -u root -p$_root_mysql_passwd -e "show databases;"

@@ -83,6 +83,9 @@ sed -i "s/memory_limit\ =\ 128M/memory_limit = 512M/g" /etc/php7/php.ini
 TIMEZONE="Europe/Helsinki"
 sed -i "s|;*date.timezone =.*|date.timezone = ${TIMEZONE}|i" /etc/php7/php.ini
 
+sed -i "s|user = nobody|user = www|i" /etc/php7/php-fpm.d/www.conf
+sed -i "s|group = nobody|group = www|i" /etc/php7/php-fpm.d/www.conf
+
 rc-update add php-fpm7
 service php-fpm7 start
 

@@ -10,7 +10,7 @@ each alpine linux stable release has it's branch (master is a clone of the last 
 
 - [x] upgrade
 - [x] bash
-- [x] misc
+- [x] misc (procps vim curl tmux etckeeper htop lynx unzip grep shadow coreutils certbot pwgen tzdata)
 - [x] dotfiles
 - [x] user
 - [x] secure openssh
@@ -28,7 +28,6 @@ each alpine linux stable release has it's branch (master is a clone of the last 
 - [x] letsencrypt
 - [x] zabbix-agent (3.4 || 4)
 - [x] urbackup-client
-- [x] passwd generator
 - [ ] solr
 - [ ] git barre repos
 - [ ] Proftpd

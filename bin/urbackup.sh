@@ -47,7 +47,7 @@ tar xzf /tmp/urbackup-client-2.4.8.0.tar.gz
 
 # Build the UrBackup client and install it
 # cd /tmp/urbackup-client-2.3.4.0
-cd /tmp/urbackup-client-2.4.8.0.tar.gz
+cd /tmp/urbackup-client-2.4.8.0
 ./configure --enable-headless
 make -j4
 make install

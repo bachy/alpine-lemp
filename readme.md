@@ -26,10 +26,10 @@ each alpine linux stable release has it's branch (master is a clone of the last 
 - [x] composer
 - [x] vhosts
 - [x] letsencrypt
+- [x] git barre repos
 - [x] zabbix-agent (3.4 || 4)
 - [x] urbackup-client
 - [ ] solr
-- [ ] git barre repos
 - [ ] Proftpd
 
 ## how to use it

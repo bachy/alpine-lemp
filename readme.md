@@ -4,6 +4,7 @@
 each alpine linux stable release has it's branch (master is a clone of the last one)
 - [3.8](https://figureslibres.io/gogs/bachir/alpine-web-werver/src/3.8)
 - [3.9](https://figureslibres.io/gogs/bachir/alpine-web-werver/src/3.9) ([master](https://figureslibres.io/gogs/bachir/alpine-web-werver))
+- [3.10](https://figureslibres.io/gogs/bachir/alpine-web-werver/src/3.10) ([master](https://figureslibres.io/gogs/bachir/alpine-web-werver))
 
 ## Features
 

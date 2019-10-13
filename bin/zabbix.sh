@@ -88,7 +88,7 @@ mkdir /etc/zabbix/zabbix_agentd.scripts
 cp "$_assets"/zabbix/scripts/nginx-stat.py /etc/zabbix/zabbix_agentd.scripts/
 chmod +x /etc/zabbix/zabbix_agentd.scripts/nginx-stat.py
 
-echo -n "This is box is a proxmox CT? [Y|n] "
+echo -n "Is This box a proxmox CT? [Y|n] "
 read yn
 yn=${yn:-y}
 if [ "$yn" = "Y" ] || [ "$yn" = "y" ]; then

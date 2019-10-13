@@ -38,7 +38,7 @@ sleep 3
 apk add mariadb mariadb-client mariadb-common
 
 # https://bugs.alpinelinux.org/issues/9046
-echo -n "are Maridb databases strored in a zfs file system? [y|n] "
+echo -n "are Maridb databases strored in a zfs file system (eg. through proxmox container)? [y|n] "
 read yn
 if [ "$yn" = "Y" ] || [ "$yn" = "y" ]; then
   echo -e "Stick with mariadb 10.1.x due to incompatibility of newer version with zfs"

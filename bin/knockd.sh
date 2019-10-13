@@ -34,7 +34,7 @@ ufw_installed=$(apk list -I | grep "ufw")
 if ! $ufw_installed; then
   echo -n "ufw installed"
 else
-  . bin/ufw.sh
+  #. bin/ufw.sh
 fi
 
 mv /etc/knockd.conf /etc/knockd.conf.ori

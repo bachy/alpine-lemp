@@ -34,7 +34,7 @@ _cwd="$(pwd)"
 . bin/email.sh
 . bin/lemp.sh
 . bin/mysqlbackup.sh
-  whie [ "$vh" != "y" ] && [ "$vh" != "n" ]
+  while [ "$vh" != "y" ] && [ "$vh" != "n" ]
   do
     echo -n "Should we install a vhost? [y|n] "
     read vh

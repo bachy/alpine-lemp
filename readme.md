@@ -20,16 +20,15 @@ each alpine linux stable release has it's branch (master is a clone of the last 
 - [x] Mariadb (bug https://bugs.alpinelinux.org/issues/9046)
 - [x] mysql backups
 - [x] php7-fpm (7.2)
+- [x] redis
 - [x] Nginx
 - [x] drush
 - [x] composer
-- [x] letsencrypt
 - [x] vhosts
-- [x] redis
+- [x] letsencrypt
 - [x] zabbix-agent (3.4 || 4)
 - [x] urbackup-client
 - [x] passwd generator
-- [x] urbackup
 - [ ] solr
 - [ ] git barre repos
 - [ ] Proftpd

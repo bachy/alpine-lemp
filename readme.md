@@ -18,24 +18,32 @@ each alpine linux stable release has it's branch (master is a clone of the last 
 - [x] Fail2ban
 - [x] Knockd
 - [x] Mariadb (bug https://bugs.alpinelinux.org/issues/9046)
-- [ ] mysql backups
+- [x] mysql backups
 - [x] php7-fpm (7.2)
 - [x] Nginx
 - [x] drush
 - [x] composer
-- [ ] letsencrypt
-- [ ] vhosts
+- [x] letsencrypt
+- [x] vhosts
 - [x] redis
 - [x] zabbix-agent (3.4 || 4)
 - [x] urbackup-client
+- [x] passwd generator
+- [x] urbackup
 - [ ] solr
 - [ ] git barre repos
 - [ ] Proftpd
-- [x] passwd generator
 
 ## how to use it
 on a fresh install
 as root
+
+0 you may need to install ssh server
+```
+apk add openssh
+rc-update add sshd
+/etc/init.d/sshd start
+```
 
 1 install git
 ```

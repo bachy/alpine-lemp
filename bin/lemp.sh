@@ -181,6 +181,7 @@ adduser -D -g 'www' www
 mkdir -p /var/www/html
 chown -R www:www /var/lib/nginx
 chown -R www:www /var/www/html
+chown -R www:www /var/tmp/nginx
 
 mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.ori
 cp "$_assets"/lemp/default.nginxconf /etc/nginx/conf.d/default.conf

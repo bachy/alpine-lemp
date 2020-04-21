@@ -23,6 +23,11 @@ if [ ! -d "$_assets" ]; then
   fi
 fi
 
+_domain=""
+_validated=""
+_drupal=""
+_letsencrypt=""
+
 while [ "$_domain" = "" ]
 do
   read -p "enter a domain name ? " _domain

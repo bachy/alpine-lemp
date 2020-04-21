@@ -14,9 +14,9 @@ each alpine linux stable release has it's branch (master is a clone of the last 
 - [x] dotfiles
 - [x] user
 - [x] secure openssh
-- [x] Ufw (may be eventualy replaced by awall ?)
+- [ ] Ufw (may be eventualy replaced by awall ?)
 - [x] Fail2ban
-- [x] Knockd
+- [ ] Knockd
 - [x] Mariadb (bug https://bugs.alpinelinux.org/issues/9046)
 - [x] mysql backups
 - [x] php7-fpm (7.2)

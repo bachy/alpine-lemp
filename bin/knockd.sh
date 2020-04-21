@@ -33,22 +33,24 @@ echo -n "checking if ufw is installed"
 ufw_installed=$(apk list -I | grep "ufw")
 if ! $ufw_installed; then
   echo -n "ufw installed"
+
+  mv /etc/knockd.conf /etc/knockd.conf.ori
+  cp "$_assets"/knockd.conf /etc/knockd.conf
+  echo -n "define a sequence number for opening ssh (as 7000,8000,9000) : "
+  read sq
+  sed -i "s/7000,8000,9000/$sq/g" /etc/knockd.conf
+
+  rc-update add knockd
+  /etc/init.d/knockd start
+
+  ufw delete allow ssh
+
+  echo -e "knockd installed and configured"
+  echo -e "please note this sequence for future ssh knocking"
+  echo "$sq"
 else
   #. bin/ufw.sh
+  echo -n "ufw not installed, needed by knockd, configuration aborted"
 fi
 
-mv /etc/knockd.conf /etc/knockd.conf.ori
-cp "$_assets"/knockd.conf /etc/knockd.conf
-echo -n "define a sequence number for opening ssh (as 7000,8000,9000) : "
-read sq
-sed -i "s/7000,8000,9000/$sq/g" /etc/knockd.conf
-
-rc-update add knockd
-/etc/init.d/knockd start
-
-ufw delete allow ssh
-
-echo -e "knockd installed and configured"
-echo -e "please note this sequence for future ssh knocking"
-echo "$sq"
 sleep 3

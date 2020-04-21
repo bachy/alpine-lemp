@@ -13,6 +13,14 @@ sleep 2
 
 # TODO use awall instead of ufw ?
 
+# BUG
+# ufw
+# Traceback (most recent call last):
+#   File "/usr/sbin/ufw", line 25, in <module>
+#     import ufw.frontend
+# ModuleNotFoundError: No module named 'ufw'
+
+
 # ufw
 apk add ufw@testing
 ufw allow ssh # knockd will open the ssh port

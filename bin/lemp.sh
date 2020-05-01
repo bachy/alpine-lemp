@@ -76,11 +76,15 @@ echo -e "Installing PHP 7.0"
 sleep 3
 apk add php7 php7-fpm php7-pdo_mysql php7-opcache php7-curl php7-mbstring php7-zip php7-xml php7-gd php7-mcrypt php7-imagick php7-phar php7-json php7-dom php7-tokenizer php7-iconv php7-xmlwriter
 
+# to make php5 availabe
+# echo "http://dl-cdn.alpinelinux.org/alpine/v3.7/main" >> /etc/apk/repositories
+# apk add php5-fpm php5-pdo_mysql php5-opcache php5-curl php5-zip php5-xml php5-gd php5-mcrypt php5-phar php5-json php5-dom php5-iconv
+
 echo -e "Configuring PHP"
 
 sed -i "s/memory_limit\ =\ 128M/memory_limit = 512M/g" /etc/php7/php.ini
 
-TIMEZONE="Europe/Helsinki"
+TIMEZONE="Europe/Paris"
 sed -i "s|;*date.timezone =.*|date.timezone = ${TIMEZONE}|i" /etc/php7/php.ini
 
 sed -i "s|user = nobody|user = www|i" /etc/php7/php-fpm.d/www.conf
@@ -105,6 +109,16 @@ apk add phpmyadmin php7-mysqli
 service php-fpm7 restart
 
 chmod +r /etc/phpmyadmin/config.inc.php
+
+# /**
+#  * This is needed for cookie based authentication to encrypt password in
+#  * cookie. Needs to be 32 chars long.
+#  */
+_blowfish="$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c32)"
+sed -i "s|$cfg['blowfish_secret'] = ''|$cfg['blowfish_secret'] = '${_blowfish}'|i" /etc/phpmyadmin/config.inc.php
+
+mkdir /usr/share/webapps/phpmyadmin/tmp
+chmod 777 /usr/share/webapps/phpmyadmin/tmp
 
 echo -e "securing phpMyAdmin"
 _pass="$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c8)"

@@ -40,13 +40,13 @@ do
   fi
 done
 
-# generate random password for zabbix mysql user
+# generate random password for new mysql user
 _passwd="$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c16)"
 
-# create zabbix mysql user
+# create new mysql user
 mysql -u root -p$_root_mysql_passwd -e "CREATE DATABASE $db_name;"
 mysql -u root -p$_root_mysql_passwd -e "CREATE USER '$db_name'@'localhost' IDENTIFIED BY '$_passwd';"
-mysql -u root -p$_root_mysql_passwd -e "GRANT USAGE ON $db_name.* TO '$db_name'@'localhost';"
+mysql -u root -p$_root_mysql_passwd -e "GRANT ALL ON $db_name.* TO '$db_name'@'localhost';"
 
 mysql -u root -p$_root_mysql_passwd -e "show databases;"
 

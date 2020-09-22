@@ -74,7 +74,7 @@ echo -e '
 '
 echo -e "Installing PHP 7.0"
 sleep 3
-apk add php7 php7-fpm php7-pdo_mysql php7-opcache php7-curl php7-mbstring php7-zip php7-xml php7-gd php7-mcrypt php7-imagick php7-phar php7-json php7-dom php7-tokenizer php7-iconv php7-xmlwriter
+apk add php7 php7-fpm php7-pdo_mysql php7-opcache php7-curl php7-mbstring php7-zip php7-xml php7-gd php7-mcrypt php7-imagick php7-phar php7-json php7-dom php7-tokenizer php7-iconv php7-xmlwriter php7-simplexml
 
 # to make php5 availabe
 # echo "http://dl-cdn.alpinelinux.org/alpine/v3.7/main" >> /etc/apk/repositories
@@ -180,6 +180,7 @@ chmod +x /usr/local/bin/drush
 
 echo -e "Drush and DrupalConsoleinstalled"
 
+# for non composer installed D7 site add assets/d7-drush-composer.json in root-folder/composer.json and run composer install
 
 echo -e '
             _

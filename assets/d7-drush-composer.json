@@ -1,0 +1,13 @@
+{
+  "require": {
+    "drush/drush": "~8.0",
+    "webflo/drupal-finder": "^1.0.0"
+  },
+  "extra": {
+    "installer-paths": {
+      ".": [
+        "type:drupal-core"
+      ]
+    }
+  }
+}

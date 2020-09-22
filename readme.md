@@ -16,7 +16,7 @@ each alpine linux stable release has it's branch (master is a clone of the last 
 - [x] dotfiles
 - [x] user
 - [x] secure openssh
-- [ ] Ufw (may be eventualy replaced by awall ?)
+- [x] Ufw@edgecommunity
 - [x] Fail2ban
 - [ ] Knockd
 - [x] Mariadb (bug https://bugs.alpinelinux.org/issues/9046)

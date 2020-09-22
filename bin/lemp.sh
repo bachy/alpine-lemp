@@ -119,15 +119,7 @@ sed -i "s|$cfg['blowfish_secret'] = ''|$cfg['blowfish_secret'] = '${_blowfish}'|
 
 mkdir /usr/share/webapps/phpmyadmin/tmp
 chmod 777 /usr/share/webapps/phpmyadmin/tmp
-
-echo -e "securing phpMyAdmin"
-_pass="$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c8)"
-_encrypted=$(openssl passwd -apr1 $_pass)
-echo -e "pma:$_encrypted" > /etc/nginx/passwds
-# service apache2 restart
-echo -e "phpMyAdmin installed"
-echo -e "You can access it at yourip/phpmyadmin"
-echo -e "please note the credentials user: pma passwd:$_pass"
+# finishing the pma install after nginx
 
 echo -e '
              _ _
@@ -202,7 +194,15 @@ chown -R www:www /var/tmp/nginx
 mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.ori
 cp "$_assets"/lemp/default.nginxconf /etc/nginx/conf.d/default.conf
 cp "$_assets"/lemp/index.php /var/www/html/
-
 rc-update add nginx
 service nginx start
 echo -e "Nginx installed"
+
+echo -e "securing phpMyAdmin"
+_pass="$(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c16)"
+_encrypted=$(openssl passwd -apr1 $_pass)
+echo -e "pma:$_encrypted" > /etc/nginx/passwds
+echo -e "phpMyAdmin installed"
+echo -e "You can access it at yourip/phpmyadmin"
+echo -e "please note the credentials user: pma passwd:$_pass"
+sleep 3

@@ -22,7 +22,7 @@ sleep 2
 
 
 # ufw
-apk add ufw@testing
+apk add ufw@edgecommunity
 ufw allow ssh # knockd will open the ssh port
 ufw allow http
 ufw allow https

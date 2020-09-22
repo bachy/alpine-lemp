@@ -21,7 +21,7 @@ each alpine linux stable release has it's branch (master is a clone of the last 
 - [ ] Knockd
 - [x] Mariadb (bug https://bugs.alpinelinux.org/issues/9046)
 - [x] mysql backups
-- [x] php7-fpm (7.2)
+- [x] php7-fpm (7.3.22)
 - [x] redis
 - [x] Nginx
 - [x] drush

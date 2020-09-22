@@ -5,7 +5,8 @@ each alpine linux stable release has it's branch (master is a clone of the last 
 - [3.8](https://figureslibres.io/gogs/bachir/alpine-web-werver/src/3.8)
 - [3.9](https://figureslibres.io/gogs/bachir/alpine-web-werver/src/3.9)
 - [3.10](https://figureslibres.io/gogs/bachir/alpine-web-werver/src/3.10)
-- [3.11](https://figureslibres.io/gogs/bachir/alpine-web-werver/src/3.11) ([master](https://figureslibres.io/gogs/bachir/alpine-web-werver))
+- [3.11](https://figureslibres.io/gogs/bachir/alpine-web-werver/src/3.11)
+- [3.12](https://figureslibres.io/gogs/bachir/alpine-web-werver/src/3.12) ([master](https://figureslibres.io/gogs/bachir/alpine-web-werver))
 
 ## Features
 
@@ -51,7 +52,7 @@ apk add git
 
 2 clone the repo
 ```
-git clone -b 3.11 --single-branch https://figureslibres.io/gogs/bachir/alpine-web-werver.git
+git clone -b 3.12 --single-branch https://figureslibres.io/gogs/bachir/alpine-web-werver.git
 ```
 
 3 you have to be root

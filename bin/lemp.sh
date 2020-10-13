@@ -83,6 +83,8 @@ apk add php7 php7-fpm php7-pdo_mysql php7-opcache php7-curl php7-mbstring php7-z
 echo -e "Configuring PHP"
 
 sed -i "s/memory_limit\ =\ 128M/memory_limit = 512M/g" /etc/php7/php.ini
+sed -i "s/post_max_size\ =\ 8M/post_max_size = 20M/g" /etc/php7/php.ini
+sed -i "s/upload_max_filesize\ =\ 2M/upload_max_filesize = 20M/g" /etc/php7/php.ini
 
 TIMEZONE="Europe/Paris"
 sed -i "s|;*date.timezone =.*|date.timezone = ${TIMEZONE}|i" /etc/php7/php.ini

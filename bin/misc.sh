@@ -17,7 +17,7 @@ echo '@edge http://dl-cdn.alpinelinux.org/alpine/edge/main
 
 apk update
 
-apk add procps vim curl tmux etckeeper htop lynx unzip grep shadow coreutils certbot pwgen rsync ntp # needrestart
+apk add procps vim curl tmux etckeeper htop lynx unzip grep shadow coreutils certbot pwgen rsync #ntp # needrestart
 
 # sed -i "s/^# en_GB.UTF-8/en_GB.UTF-8/g" /etc/locale.gen
 # locale-gen

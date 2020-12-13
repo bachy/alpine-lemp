@@ -153,6 +153,7 @@ echo -e "Installing Composer"
 sleep 3
 export COMPOSER_HOME=/usr/local/composer
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+ln -sf /usr/local/bin/composer /usr/bin/composer
 composer about
 echo -e "Composer installed"
 
@@ -167,12 +168,14 @@ echo -e "Installing Drush and DrupalConsole"
 sleep 3
 curl https://drupalconsole.com/installer -L -o /usr/local/bin/drupal
 chmod +x /usr/local/bin/drupal
+ln -sf /usr/local/bin/drupal /usr/bin/drupal
 drupal about
 # curl https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar -L -o /usr/local/bin/drush
 wget -O /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/latest/download/drush.phar
 chmod +x /usr/local/bin/drush
-
-echo -e "Drush and DrupalConsoleinstalled"
+ln -sf /usr/local/bin/drush /usr/bin/drush
+drush status
+echo -e "Drush and DrupalConsole installed"
 
 # for non composer installed D7 site add assets/d7-drush-composer.json in root-folder/composer.json and run composer install
 
@@ -192,6 +195,8 @@ mkdir -p /var/www/html
 chown -R www:www /var/lib/nginx
 chown -R www:www /var/www/html
 chown -R www:www /var/tmp/nginx
+
+sed -i "s|user nginx;|user www;|i" /etc/nginx/nginx.conf
 
 mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.ori
 cp "$_assets"/lemp/default.nginxconf /etc/nginx/conf.d/default.conf

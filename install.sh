@@ -7,6 +7,8 @@ echo -e '
  /_/ \_\_| .__/_|_||_\___| |____|___|_|  |_|_|
          |_|
 '
+# https://wiki.alpinelinux.org/wiki/Alpine_setup_scripts
+
 echo -e "\033[35;1mThis script has been tested only on Alpine Linux \033[0m"
 
 . bin/checkroot.sh

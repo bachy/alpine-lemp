@@ -39,6 +39,8 @@ adduser "$user"
 
 sed -i "s/$user:\/bin\/ash/$user:\/bin\/bash/g" /etc/passwd
 
+usermod -a -G www "$user"
+
 # TODO limiting su to the admin group
 yn="reset"
 while [ "$yn" != "y" ] && [ "$yn" != "n" ]

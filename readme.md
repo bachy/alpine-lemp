@@ -1,4 +1,4 @@
-# Install web server and secure it on alpine linux 3.9
+# Install web server and secure it on alpine linux 3.12
 
 ## Branches
 each alpine linux stable release has it's branch (master is a clone of the last one)

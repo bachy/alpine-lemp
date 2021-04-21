@@ -4,8 +4,10 @@ echo "updating drupal 8"
 echo "Switching to project docroot."
 cd ./app
 echo ""
-echo "Pulling down latest code."
+echo "Pulling down latest code and submodules."
 git pull --ff-only origin prod
+git submodule update --init --recursive --remote
+
 echo ""
 echo "Clearing drush caches."
 drush cache-clear drush

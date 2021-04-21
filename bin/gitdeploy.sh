@@ -125,7 +125,7 @@ if [ "$yn" = "yes" ]; then
   _cur_ip=$(ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
   echo "git repos for $_domain install succeed"
   echo "your site stay now to /home/$user/www/$_domain/app"
-  echo "you can push updates on prod branch through $user@$_cur_ip:git-repositories/$_domain.git"
+  echo "you can push updates on prod branch through $user@$_cur_ip:git-repos/$_domain.git"
   cd "$_cwd"
 else
   echo "Git barre repo creation aborted"

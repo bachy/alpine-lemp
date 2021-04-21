@@ -1,4 +1,7 @@
 # Install web server and secure it on alpine linux 3.12
+/!\ WARNING if your file system is ZFS, will not be compatible with drupal 9 because of mariadb bug
+
+https://bugs.alpinelinux.org/issues/9046
 
 ## Branches
 each alpine linux stable release has it's branch (master is a clone of the last one)
